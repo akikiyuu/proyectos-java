@@ -1,0 +1,146 @@
+package bancoo;
+
+import java.util.Scanner;
+
+
+public class Bancooooooooooooooooooooo {
+
+    
+    public static void main(String[] args) { 
+        
+        Scanner leer = new Scanner(System.in);
+        
+        String usuario = "oliwi@gmail.com";
+        String user = "" ;
+        boolean validador = false;
+        boolean valicontra = false;
+        String clave = "1233" ;
+        String contra = "";
+        int menu = 0;
+        String pass = "";
+        int deposito = 0;
+        int saldo = 1000000;
+        int giro = 0;
+        int contadora = 0;
+        int contador = 0;
+        String nuevacontra = "";
+        int contadorcontra = 0;
+        
+               System.out.println("=========LOGIN=========");
+               
+        do {
+            
+            System.out.println("ingrese usuario"); 
+            user = leer.next();
+            
+                   if (user.equals(usuario))  {   
+                       System.out.println("ingrese su contraseña");
+                       contra = leer.next();
+                    
+                       if (clave.equals(contra)) {
+                           System.out.println("bienvenido"); 
+                           validador = true;
+                       }else{
+                           System.out.println("contraseña erronea");
+                           contador++;
+                       }
+                    
+                   }else {
+                       System.out.println("usuario incorrecto");
+                       contador++;
+                   }
+                   
+        } while (contador != 3);
+                      
+                        if (validador == true) {
+                            do {
+                                System.out.println("==========MENU=========\n"
+                                + "1-consulta de saldo\n"
+                                + "2-giro de dinero\n"
+                                + "3-deposito de dinero\n"
+                                + "4-cambio de clave\n"
+                                + "5-Salir");
+                                menu = leer.nextInt();
+                                switch (menu) {
+                                    case 1:
+                                       System.out.println("su saldo actual es de " + saldo);
+                                       break;
+                                    case 2:
+
+                                       do {
+                                           System.out.println("ingrese el monto que desea girar \n"
+                                                   + "el giro minimo es de 1.000\n"
+                                                   + "el giro maximo es de 200.000\n"
+                                                   + "seleccione el  giro que desea hacer\n"
+                                                   + "");
+
+                                           System.out.println("ingrese la cantidad que desee girar de su cuenta");
+                                           giro = leer.nextInt();
+                                           if (giro>1000 && giro<200000) {
+                                               saldo = saldo - giro;
+                                           }
+
+                                       } while(giro<1000 && giro>200000);
+                                       System.out.println("su saldo se ha actualizado su total es " + saldo);
+
+                                       break;
+                                    case 3:
+                                       System.out.println("su saldo actual es "+ saldo);
+                                       System.out.println("ingrese la cantidad que desea depositar");
+                                       deposito = leer.nextInt();
+                                       if (deposito>1000 && deposito<200000) {
+                                         saldo =  saldo + deposito;
+                                           System.out.println("su saldo se ha actualizado con "+ saldo);
+                                       } else {
+                                           System.out.println("monto a depositar es incorrecto\n");
+                                       }
+                                      
+
+                                       break;
+                                    case 4:
+                                       int contador1 = 0;
+
+                                       System.out.println("ingrese su actual contraseña");
+                                       pass = leer.next(); 
+
+                                       if (clave.equals(pass)) {
+                                           System.out.println("ingrese su nueva contraseña");
+                                           pass = leer.next();
+                                           System.out.println("confirme su contraseña");
+                                           nuevacontra = leer.next();
+                                           if (pass.equals(nuevacontra)) {
+                                               System.out.println("su contraseña se ha actualizado");
+                                           }
+
+                                       }else{ 
+
+                                           contador1 = contador1 + 1;
+                                           System.out.println("contraseña incorrecta");
+
+                                       }
+                                        if (contador1 == 3) {
+                                            System.out.println("su cuenta ha sido bloqueada dirigase a su banco presencialmente");
+                                        }
+
+                                       break;
+                                    case 5:
+                                        System.out.println("vuelva pronto :)");
+                                    break;
+                                   default:
+
+                                       System.out.println("error vuelva a seleccionar la opcion");
+                                       
+                               }
+                                
+                        } while (menu !=5);  
+                            
+                    }
+                     
+                        if (validador == false) {
+                            System.out.println("su cuenta a sido bloqueada dirigase a su banco presencialmente");
+                        }
+                       
+                   
+                }               
+            }
+            
